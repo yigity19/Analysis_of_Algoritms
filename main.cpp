@@ -3,6 +3,7 @@
 #include <sstream>
 #include <string>
 #include <vector>
+#include "heap_sort.cpp"
 #include "classes.cpp"
 
 using namespace std;
@@ -22,7 +23,6 @@ int main(){
 	if(file.is_open()){                          // read from the csv file {
 		while(getline(file, line))
 		{
-            cout<<"burada"<<endl;
 			row.clear();
 			stringstream str(line);
  
@@ -43,6 +43,9 @@ int main(){
 	}
 	else
 		cout<<"Could not open the file\n";
+    //printArray(vehicles);
+    cout <<"------------------------------------------"<<endl;
+    heap_sort(vehicles);
     printArray(vehicles);
     return 0;
 }

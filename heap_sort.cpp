@@ -7,14 +7,14 @@ void exchange(Vehicle* A, int a, int b){  // neden & kullanamadım??
         A[b] = *temp;
 }
 
-void min_heapify(Vehicle* A, int i){
+void min_heapify(Vehicle* A, int i, int heap_size = 1642){
     int l = i * 2;
     int r = l +1;
     int smallest = i;
-    if (l < 1642 && A[l] < A[i])
+    if (l < heap_size && A[l] < A[i])
         smallest = l;
 
-    if (r <= 1641 && A[r] < A[smallest])
+    if (r < heap_size && A[r] < A[smallest])
         smallest = r;
     
     if (smallest != i){
@@ -37,7 +37,7 @@ void heap_sort(Vehicle* A){
     for (int i = 1641; i > 0; i--){
         exchange(A, 0, i);
         // decrease heap size but how
-        min_heapify(A, 0);
+        min_heapify(A, 0, i);   // not so sure about what I have done
     }
 }
 
