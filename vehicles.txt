@@ -1,4 +1,4 @@
-vehicle_ID	location	distance	speed
+vehicle_ID  location	distance	speed
 1	sx7chk	89.75664429	78
 2	sx7chm	89.65909619	78
 3	sx7chx	88.56278951	73
