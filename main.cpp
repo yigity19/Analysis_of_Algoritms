@@ -15,7 +15,7 @@ void printArray(Vehicle* vehicles){
 }
 
 int main(){
-    Vehicle* vehicles = new Vehicle[1642];         
+    Vehicle vehicles[1642];         
 	vector<string> row;
 	string line, word;
     int i = -1;
@@ -31,12 +31,14 @@ int main(){
             
             //Vehicle* new_vehicle = new Vehicle;
             if (i != -1){
-            Vehicle new_vehicle;
-            new_vehicle.id =  stoi(row[0]);
-            new_vehicle.location = row[1];
-            new_vehicle.distance = stof(row[2]);
-            new_vehicle.speed = stoi(row[3]);
-            vehicles[i] = new_vehicle;
+                Vehicle* new_vehicle = new Vehicle;
+                new_vehicle->id =  stoi(row[0]);
+                new_vehicle->location = row[1];
+                new_vehicle->distance = stod(row[2]);
+                new_vehicle->speed = stoi(row[3]);
+                
+                vehicles[i] = *new_vehicle;
+                //delete new_vehicle;
             }
             i++;
 		}
@@ -45,7 +47,7 @@ int main(){
 		cout<<"Could not open the file\n";
     //printArray(vehicles);
     cout <<"------------------------------------------"<<endl;
-    heap_sort(vehicles);
+    heap_sort(vehicles, 1642);
     printArray(vehicles);
     return 0;
 }

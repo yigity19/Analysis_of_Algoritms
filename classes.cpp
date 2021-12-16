@@ -7,7 +7,7 @@ class Vehicle{
     public:
         int id;
         string location;
-        float distance;
+        double distance;
         int speed;
         
         bool operator<(Vehicle &a);
