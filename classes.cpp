@@ -15,10 +15,10 @@ class Vehicle{
 }; 
 
 
-
+// --------------------------------------------------*---------------------------------------------------
 bool Vehicle::operator<(Vehicle &a){
-    float thisTime = this->calculateTime();
-    if (thisTime < a.calculateTime())
+    float thisTime = this->speed;
+    if (thisTime < a.speed)
         return true;
     return false;
 }

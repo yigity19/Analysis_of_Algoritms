@@ -8,14 +8,15 @@
 
 using namespace std;
 
-void printArray(Vehicle* vehicles){
-    for(int i = 0; i < 1642; i++){
+void printArray(Vehicle* vehicles, int len){
+    for(int i = 0; i < len; i++){
         cout<< vehicles[i].id<< " " <<vehicles[i].location<< " "<< vehicles[i].distance<< " " <<vehicles[i].speed<<endl;
     }
 }
 
 int main(){
-    Vehicle vehicles[1642];         
+    int heap_size = 1642;
+    Vehicle vehicles[heap_size];         
 	vector<string> row;
 	string line, word;
     int i = -1;
@@ -46,8 +47,10 @@ int main(){
 	else
 		cout<<"Could not open the file\n";
     //printArray(vehicles);
+    heap_sort(vehicles, heap_size);
+    Vehicle* deneme = heap_extract_min(vehicles, heap_size);
+    printArray(vehicles, heap_size);
     cout <<"------------------------------------------"<<endl;
-    heap_sort(vehicles, 1642);
-    printArray(vehicles);
+    printArray(deneme, 1);
     return 0;
 }

@@ -11,10 +11,10 @@ void min_heapify(Vehicle A[], int heap_size, int smallest){
     int i = smallest;
     int l = i * 2 + 1;
     int r = i * 2 + 2;
-    if (l < heap_size && A[l] < A[smallest])
+    if (l < heap_size && A[smallest] < A[l])
         smallest = l;
 
-    if (r < heap_size && A[r] < A[smallest])
+    if (r < heap_size && A[smallest] < A[r])
         smallest = r;
     
     if (smallest != i){
@@ -28,15 +28,12 @@ void min_heapify(Vehicle A[], int heap_size, int smallest){
 
 void build_min_heap(Vehicle A[], int heap_size){
     for (int i = heap_size / 2 -1; i >= 0; i-- ){
-        min_heapify(A,i, heap_size);
+        min_heapify(A,heap_size, i);
     }
 }
 
 void heap_sort(Vehicle* A, int heap_size){
-    //build_min_heap(A, heap_size);
-    for (int i = heap_size / 2 -1; i >= 0; i-- ){
-        min_heapify(A,heap_size, i);
-    }
+    build_min_heap(A, heap_size);
     for (int i = heap_size - 1; i >= 0; i--){
         //exchange(A, 0, i);
         swap(A[0], A[i]);
@@ -46,10 +43,17 @@ void heap_sort(Vehicle* A, int heap_size){
 }
 
 
-//Vehicle* heap_extract_min(Vehicle* vehicles, int heap_size){
- ////   if (heap_size < 1){
-  //      cout <<"ne yaptın gardaş"<<endl;
-  //      return NULL;
-  //  } 
 
-//}
+
+Vehicle* heap_extract_min(Vehicle* vehicles, int &heap_size){
+    if (heap_size < 1){
+        cout <<"ne yaptın gardaş"<<endl;
+    } 
+
+    Vehicle* min = new Vehicle;
+    min[0] = vehicles[0]; 
+    vehicles[0] = vehicles[heap_size - 1];
+    heap_size--;
+    min_heapify(vehicles, heap_size, 0);
+    return min;
+}
