@@ -25,7 +25,14 @@ bool Vehicle::operator<(Vehicle &a){
 
 class Request{
     public:
+        Request(string, float, int);
         string location;
         float distance;
         int lucky_num;
 };
+
+Request::Request(string location, float distance, int lucky_num){
+    this->location = location;
+    this->distance = distance;
+    this->lucky_num = lucky_num;
+}

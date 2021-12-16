@@ -48,9 +48,13 @@ int main(){
 		cout<<"Could not open the file\n";
     //printArray(vehicles);
     heap_sort(vehicles, heap_size);
-    Vehicle* deneme = heap_extract_min(vehicles, heap_size);
-    printArray(vehicles, heap_size);
+    //Vehicle* deneme = heap_extract_min(vehicles, heap_size);
+    //printArray(vehicles, heap_size);
+    Vehicle* deneme2 = decreaseKey(vehicles, heap_size, 10);
+    Request request("yunus", 442.00, 10);
     cout <<"------------------------------------------"<<endl;
-    printArray(deneme, 1);
+    minHeapInsert(vehicles, request, heap_size, 3);
+    printArray(vehicles, heap_size);
+    //printArray(deneme2, 1);
     return 0;
 }
