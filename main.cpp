@@ -1,3 +1,11 @@
+/**
+ * @file main.cpp
+ * @author Yunus Emre Yiğit (yigity19@itu.edu.tr)
+ * @brief 
+ * @Student_Number 150190107
+ * @date 2021-12-17
+ */
+
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -45,16 +53,46 @@ int main(){
 		}
 	}
 	else
-		cout<<"Could not open the file\n";
-    //printArray(vehicles);
+		cout<<"Could not open the vehicles.txt\n";
+
+    i = -1;
+    vector<Request> requests;
+	fstream file2 ("requests.txt", ios::in);
+	if(file2.is_open()){                          // read from the csv file {
+		while(getline(file2, line))
+		{
+			row.clear();
+			stringstream str(line);
+ 
+			while(getline(str, word, '\t'))             
+				row.push_back(word);
+            
+            //Vehicle* new_vehicle = new Vehicle;
+            if (i != -1){
+                double row1 = stod(row[1]);
+                int row2 = stoi(row[2]);
+                Request* new_request = new Request(row[0], row1, row2);
+                requests.push_back(*new_request);
+            }
+            i++;
+		}
+	}
+	else
+		cout<<"Could not open the request.txt\n";
+
+    
+    
+    /*//printArray(vehicles);
     heap_sort(vehicles, heap_size);
-    //Vehicle* deneme = heap_extract_min(vehicles, heap_size);
     //printArray(vehicles, heap_size);
-    Vehicle* deneme2 = decreaseKey(vehicles, heap_size, 10);
-    Request request("yunus", 442.00, 10);
-    cout <<"------------------------------------------"<<endl;
-    minHeapInsert(vehicles, request, heap_size, 3);
+    decreaseKey(vehicles, heap_size, 1);
+    Vehicle* deneme = heap_extract_min(vehicles, heap_size);
+
+    Request request("*************************************", 442.00, 117);
+    //cout <<"------------------------------------------"<<endl;
+    minHeapInsert(vehicles, request, heap_size, *deneme);
     printArray(vehicles, heap_size);
-    //printArray(deneme2, 1);
+    //printArray(deneme2, 1);*/
+
     return 0;
 }
