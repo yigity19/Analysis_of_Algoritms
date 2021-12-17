@@ -17,16 +17,28 @@ class Vehicle{
         double distance;
         int speed;
         double time;
-
+        Vehicle(){time = -1;};
+        Vehicle(int id,string location, double distance, int speed);
         bool operator<(Vehicle &a);
         float calculateTime(){time = distance / speed;}
+
 }; 
+
+Vehicle::Vehicle(int id,string location, double distance, int speed){
+    this->id = id;
+    this->location = location;
+    this->distance = distance;
+    this->speed = speed;
+    time = distance / speed;
+}
 
 
 // --------------------------------------------------*---------------------------------------------------
 bool Vehicle::operator<(Vehicle &a){
-    this->calculateTime();
-    a.calculateTime();
+    //this->calculateTime();
+    //a.calculateTime();
+    //if (time == -1)
+    cout<<"time: "<<time<<"a.time: "<<a.time<<endl;
     float thisTime = this->time;
     if (thisTime < a.time)
         return true;

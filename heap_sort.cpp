@@ -119,11 +119,12 @@ Vehicle* heap_extract_min(Vehicle* vehicles, int &heap_size){
  * @param heap_size Size of the heap
  * @param key The place of the node whose place is to be corrected
  */
-void decreaseKey(Vehicle vehicles[], int &heap_size, int key){ //--------------------------------------------------------------------------
+void decreaseKey(Vehicle vehicles[], int &heap_size, int key, bool flag = false){ //--------------------------------------------------------------------------
     int parent = (key - 1) / 2;
-    vehicles[key].time = 0;
+    if (not flag)
+        vehicles[key].time = -1;
     while(parent > 0 && vehicles[key] < vehicles[parent]){ 
-        cout << "key " <<key << " " << parent << vehicles[parent].speed << " " << vehicles[key].speed <<endl;
+        //cout << "key " <<key << " " << parent << vehicles[parent].speed << " " << vehicles[key].speed <<endl;
         swap(vehicles[parent], vehicles[key]);
         key = parent;
         parent = (key - 1) / 2; 
@@ -140,12 +141,12 @@ void decreaseKey(Vehicle vehicles[], int &heap_size, int key){ //---------------
  * @param gone The vehicle object which brought the customer to the destination
  */
 void minHeapInsert(Vehicle vehicles[], Request &request, int &heap_size, Vehicle &gone){
-    cout<<"heap_size"<<heap_size<<endl;
+    //cout<<"heap_size"<<heap_size<<endl;
     heap_size++;
     gone.distance = request.distance;    // -1 olması gerekiyor mu 
     gone.location = request.location;
     gone.calculateTime();
     vehicles[heap_size -1] = gone;
-    decreaseKey(vehicles, heap_size,  heap_size - 1);
+    decreaseKey(vehicles, heap_size,  heap_size - 1, true);
 
 }   
