@@ -101,7 +101,7 @@ void heap_sort(Vehicle* A, int heap_size){
  */
 Vehicle* heap_extract_min(Vehicle* vehicles, int &heap_size){
     if (heap_size < 1){
-        cout <<"ne yaptın gardaş"<<endl;
+        cout <<"What did you do? Where is the heap"<<endl;
     } 
 
     Vehicle* min = new Vehicle;
@@ -120,7 +120,6 @@ Vehicle* heap_extract_min(Vehicle* vehicles, int &heap_size){
  * @param key The place of the node whose place is to be corrected
  */
 void decreaseKey(Vehicle vehicles[], int &heap_size, int key, bool flag = false){ //--------------------------------------------------------------------------
-    int parent = (key - 1) / 2;
     if (not flag)
         vehicles[key].time = -1;
     while(key > 0 && vehicles[key] < vehicles[(key-1)/2]){ 
