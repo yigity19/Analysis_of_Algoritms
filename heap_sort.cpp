@@ -25,10 +25,10 @@ void min_heapify(Vehicle A[], int &heap_size, int smallest){
     int i = smallest;
     int l = i * 2 + 1;
     int r = i * 2 + 2;
-    if (l < heap_size && A[smallest] < A[l])
+    if (l < heap_size && A[l] < A[smallest])
         smallest = l;
 
-    if (r < heap_size && A[smallest] < A[r])
+    if (r < heap_size && A[r] < A[smallest])
         smallest = r;
     
     if (smallest != i){
@@ -123,11 +123,10 @@ void decreaseKey(Vehicle vehicles[], int &heap_size, int key, bool flag = false)
     int parent = (key - 1) / 2;
     if (not flag)
         vehicles[key].time = -1;
-    while(parent > 0 && vehicles[key] < vehicles[parent]){ 
+    while(key > 0 && vehicles[key] < vehicles[(key-1)/2]){ 
         //cout << "key " <<key << " " << parent << vehicles[parent].speed << " " << vehicles[key].speed <<endl;
-        swap(vehicles[parent], vehicles[key]);
-        key = parent;
-        parent = (key - 1) / 2; 
+        swap(vehicles[(key -1) / 2], vehicles[key]);
+        key = (key - 1) /2; 
     }
 }
 

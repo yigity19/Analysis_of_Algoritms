@@ -84,7 +84,7 @@ int main(){
     clock_t timer;
     timer = clock();
     //cout << requestsArray[43877].location << endl;
-    heap_sort(vehicles, heap_size);
+    build_min_heap(vehicles, heap_size);
     int N = 1000;
     for (int i = 0; i < requests.size(); i++){
         if (requests[i].lucky_num == 0){
